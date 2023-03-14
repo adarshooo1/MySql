@@ -1,0 +1,41 @@
+Table in Database are in the form of rows and columns.
+
+To create a table:
+    cmd:CREATE TABLE Employees(
+        employee_Id INT,
+        first_Name VARCHAR(50),
+        last_Name VARCHAR(50),
+        hourly_pay DECIMAL(5,2),
+        hire_Date DATE
+        );
+
+To Select a Table:
+    cmd: SELECT * from Employees;
+
+To Rename a Table:
+    cmd: RENAME TABLE Employees To Workers;
+
+To Delete a Table:
+    cmd: DROP TABLE Workers;
+
+To Extend the Table:
+    cmd:ALTER TABLE Employees
+        ADD Employee_Number VARCHAR(13);
+
+        //To check the table Header Columns after Creating and Adding the additional table header section -->cmd: SELECT * from Employees; (Added in Table Employees).
+
+To rename the Table content:
+    cmd:ALTER TABLE Employees
+        RENAME COLUMN Phone_Number To email;
+        //check again after refreshing. with --> cmd: SELECT * from Employees;
+
+To Modify the Table Columns Header Items Datatype:
+    cmd:ALTER TABLE Employees
+        MODIFY COLUMN email VARCHAR(100);
+
+To Move the Columns Around the Table Header:
+    cmd:ALTER TABLE Employees
+        MODIFY email VARCHAR(100)
+        AFTER last_Name;
+
+        // To check --> cmd: SELECT * from Employees;

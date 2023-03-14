@@ -1,0 +1,26 @@
+To create a database in the My Sql
+    cmd: create DATABASE myDB; --(Name of the database)   (Not case sensitive)
+
+To use a Database:
+    Step:- Go to the My Sql workbench.
+           Create a Database. (Example:create DATABASE myDB)
+           At the left side there is Schemas refresh it and Select the myDB right click and set as Default schemas.
+           cmd: use myDB;
+    
+To Delete the Database:
+    cmd:DROP DATABASE myDB.
+
+To Read and Delete the content the database:
+    cmd:ALTER DATABASE myDB READ ONLY = 1;
+    //if we delete the Database in the Read only mode and read only is = 1 then it will not be deleted.
+    cmd:DROP DATABASE myDB;
+    //WARNING:-	4	22:00:14	drop DATABASE mydb	Error Code: 3989. Schema 'mydb' is in read only mode.	0.000 sec(It will not be deleted)
+
+    cmd:ALTER DATABASE myDB READ ONLY = 0;
+    //Now if we Delete the database in the read only mode and read only is = 0, then it will be able to delete
+    cmd:DROP DATABASE myDB;
+    //success
+
+
+
+               
