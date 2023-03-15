@@ -1,3 +1,6 @@
+/////////////////////////////////////////////////////////////////////////////////////////////////////////
+PART 1:
+/////////////////////////////////////////////////////////////////////////////////////////////////////////
 Table in Database are in the form of rows and columns.
 
 To create a table:
@@ -38,4 +41,52 @@ To Move the Columns Around the Table Header:
         MODIFY email VARCHAR(100)
         AFTER last_Name;
 
+        //Or we can use to place email at first
+        cmd: ALTER TABLE Employees
+        Modify email VARCHAR(100)
+        First;  //First is the default function which will place the email at the very first index in the Column.
+        
         // To check --> cmd: SELECT * from Employees;
+
+To Delete the content in the Column Header at any index by calling the name:
+    cmd:ALTER TABLE Employees
+        DROP COLUMN email;  
+
+/////////////////////////////////////////////////////////////////////////////////////////////////////////
+PART 2:
+/////////////////////////////////////////////////////////////////////////////////////////////////////////
+To fill the column row in the table
+
+To INSERT Single person Values in row:
+cmd:INSERT INTO Employees
+    VALUES (1 , "Adarsh" , "Singh", 25.50 , "2023-01-02");
+
+To INSERT Multiple person Values in rows:
+cmd:INSERT INTO Employees
+    VALUES (2 , "Priyanka" , "Dahiya", 21.20 , "2023-01-02"),
+		   (3 , "Makhan" , "Singh", 30.50 , "2023-01-03"),
+           (4 , "Aman" , "Singh", 22.50 , "2023-01-04"),
+           (5 , "Komal" , "Singh", 25.50 , "2023-01-05");
+
+           //If we tried to insert value inside table like this
+           VALUES(6 , "Kanak" ,"Kishori")
+
+           Error: 0	21	13:32:05	INSERT INTO Employees VALUES (5 , "Kanak" , "Kishori")	Error Code: 1136. Column count doesn't match value count at row 1	0.000 sec
+
+           //So we can do like this:
+cmd:INSERT INTO Employees (employee_id,first_Name ,last_name) 
+               VALUES (5 , "Kanak" , "Kishori"); 
+               //Next of the values will be gatting null.
+
+    //Inserting like this make a new field and Left of the field getting null.
+cmd:INSERT INTO Employees(hourly_pay , hire_Date);
+    VALUES(25.50 , "2023-01-05");  
+
+    //(Error)Inserting elements like this will give error to the code.
+cmd:INSERT INTO Employees;
+            VALUES(25.50 , "2023-01-05");
+
+
+
+
+

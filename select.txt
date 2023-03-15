@@ -1,0 +1,29 @@
+To get the all table Data at one shot.
+
+cmd:SELECT * FORM Employees;
+
+To get the specific column details.
+cmd:SELECT from Employees
+    where employee_Id = 2;
+    //This will give all the data of that specific columns wose employee_Id is 2.
+
+To get the first_Name and last_Name of all the table.
+cmd:SELECT first_Name , last_Name
+    from Employees;
+
+To get the first_Name and last_Name of all the table fomr the specific employee_Id.
+cmd:SELECT first_Name , last_Name
+    from employees
+    where employee_Id = 4;
+
+
+Note:
+There is no need to give the format as per the data we given we can call it anyone from anywhere; 
+
+Data format that we given:-employee_Id, first_Name , last_Name , hourly_pay , hire_Date
+
+Example-->cmd:SELECT last_Name, first_Name, hire_Date, hourly_pay, employee_Id
+          from Employees;   
+
+    
+
