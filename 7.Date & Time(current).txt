@@ -1,0 +1,27 @@
+Lets make a table first:
+    cmd:create table Test(
+        my_date DATE,
+        my_time TIME,
+        my_dateTime DATETIME
+        );
+
+Then We have to insert the values of the Current Time , Current Date , Current Time and Date Together.
+    cmd:INSERT INTO Test
+        values(current_date(), current_time(), NOW());
+
+    cmd:INSERT INTO Test
+        Values(current_date(), null , null);
+
+To Insert specific content inside the table:
+    cmd:ALTER TABLE Test(my_time, my_datetime)
+        values(current_time(), now());
+        //which isn't fill that will be get be null as a Value;
+
+To Delete specific content inside the table:
+    cmd:DELETE FROM Test
+        where my_time = "14:04:57";
+
+
+//We can also manipulate time Like(current_time + 1 --> for Tomorrow, current_time - 1 --> For Yesterday)
+
+
