@@ -1,0 +1,33 @@
+Autocommit: When autocommit is enabled, MySQL automatically commits each SQL statement as a separate transaction. This means that each SQL statement is treated as a transaction and committed as soon as it completes. You can enable or disable autocommit using the SET AUTOCOMMIT command.
+    cmd:SET AUTOCOMMIT = OFF;
+
+    NOTE[
+        SET AUTOCOMMIT = OFF is a MySQL command that disables autocommit for the current session. When autocommit is disabled, MySQL does not automatically commit every SQL statement as a separate transaction. This means that multiple SQL statements can be grouped together into a single transaction that can be committed or rolled back as a unit.
+
+By default, autocommit is enabled in MySQL, which means that each SQL statement is treated as a separate transaction that is committed as soon as it completes. Disabling autocommit can be useful when you want to group multiple SQL statements together into a single transaction, such as when updating multiple tables or inserting multiple rows.
+
+When autocommit is disabled, you can use the COMMIT command to make the changes permanent or the ROLLBACK command to undo the changes made within the transaction. Until you explicitly commit or rollback the transaction, any changes made within it are not visible to other sessions.
+
+It is important to note that disabling autocommit should be done with caution, as it can have unintended consequences if you forget to commit or rollback the transaction. It is also important to ensure that the transactions are properly managed and coordinated to maintain data integrity and consistency.
+    ]
+
+Commit: The commit command is used to make permanent changes to a database after a transaction has been completed. When you execute the commit command, all the changes made within the transaction are saved to the database. Once a transaction is committed, it cannot be undone using the rollback command.
+    cmd:COMMIT;
+
+Rollback: The rollback command is used to undo changes made within a transaction that has not yet been committed. When you execute the rollback command, all the changes made within the transaction are discarded and the database is returned to its previous state.
+    cmd:ROLLBACK;
+
+
+
+////////////////////////////////////////////////
+SUMMARY
+
+When we do auto commit off then we have to commit the changes manually:
+cmd: commit;
+
+if we have delete the tables each and every content by cmd:Delete form Employees;
+
+then we can undo the change of deletetion by-
+cmd:Rollback
+
+We get all the tale cotent back.
