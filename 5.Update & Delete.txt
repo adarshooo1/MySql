@@ -17,3 +17,7 @@ cmd:update employees
 ///////////////////////////DELETE///////////////////////////
 To Delete all rows and columns:
     cmd:DELETE FROM Employees;
+
+To Delete specific row and columns:
+    cmd:DELETE FROM Employees
+        Where employee_Id = 5
