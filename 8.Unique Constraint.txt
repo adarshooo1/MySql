@@ -1,0 +1,18 @@
+To make a unique contraints in a new Table:
+    cmd:create table products(
+        product_id INT,
+        product_name VARCHAR(25) UNIQUE,
+        price Decimal(5,2)
+    );
+
+To make a unique contraints in an Old table:
+    cmd:ALTER TABLE products
+        ADD CONSTRAINTS
+        UNIQUE(Product_Name)
+
+If we have already make a table which have dupicate before making a 
+unique contraints to the header of the table then making a table header will
+not become a uniques contraints before updating the duplicate tale content.
+
+Simply: Unique Constraints means item under the uniques contraint header should be different like product_id or produect name.
+
