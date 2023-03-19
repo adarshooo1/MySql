@@ -1,0 +1,44 @@
+To Add the Default constraint in a new table:
+    cmd:product_id INT,
+        product_name VARCHAR(25),
+        price DECIMALS(4,2) DEFAULT 0
+        );
+
+To Add the default constraint in an Existing table header Item:
+    cmd:ALTER TABLE products
+        ALTER price SET DEFAULT 0;   
+
+To insert Values in the table with a default constraint:
+    cmd:INSERT INTO products (product_id , product_name)
+        values (107,"Spoon"),
+            (108,"Chopsticks"),
+            (109,"Fork"),
+            (110,"Napkin");
+
+
+///////////////////////////////////////////////////////
+Make other table in which we use defult (DATETIME) in a particular table header.
+
+cmd:-
+create table Transaction(
+    Transaction_Id INT,
+    Transaction_AMOUNT , DECIMALS,
+    Transaction_DateTime DATETIME Default Now()
+);
+
+
+cmd:-
+ create table Transaction(
+     Transaction_Id INT,
+     Transaction_AMOUNT decimal,
+     Transaction_DateTime DATETIME Default Now()
+);
+
+cmd:-
+    insert into transaction(transaction_id , transaction_amount)
+    values (1 , 30.44);
+
+TO DELETE:-
+cmd:-
+delete from transaction
+where Transaction_DateTime = "2023-03-19 16:26,17";
