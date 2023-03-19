@@ -1,0 +1,27 @@
+To make a (not null) constraint in new Table:
+    cmd:create table products(
+        product_id INT,
+        product_name VARCHAR(25) UNIQUE,
+        price Decimal(5,2) NOT NULL;
+    );
+
+To make a (not null) constraint to a Existing table:
+Alter table products
+modify price Decimal(4,2) not null ; 
+
+Before Making a table header into a null constraint if there
+is a null value then we cannot turn that table header to the
+(not null) constraint so thats why we have to update the null
+value of the table content under that header which we are
+going to make a null constraint then can make that table header a not null constraint.
+
+Example:-
+-- insert into products
+-- values (107 , "Manchurian", null);
+
+-- update products
+-- set price = 80
+-- where product_id = 107;
+
+-- alter table products
+-- modify price decimal(5,2) not null;
