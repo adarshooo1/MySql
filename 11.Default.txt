@@ -20,18 +20,18 @@ To insert Values in the table with a default constraint:
 Make other table in which we use defult (DATETIME) in a particular table header.
 
 cmd:-
-create table Transaction(
-    Transaction_Id INT,
-    Transaction_AMOUNT , DECIMALS,
-    Transaction_DateTime DATETIME Default Now()
-);
+    create table Transaction(
+        Transaction_Id INT,
+        Transaction_AMOUNT , DECIMALS,
+        Transaction_DateTime DATETIME Default Now()
+    );
 
 
 cmd:-
- create table Transaction(
-     Transaction_Id INT,
-     Transaction_AMOUNT decimal,
-     Transaction_DateTime DATETIME Default Now()
+    create table Transaction(
+        Transaction_Id INT,
+        Transaction_AMOUNT decimal,
+        Transaction_DateTime DATETIME Default Now()
 );
 
 cmd:-
@@ -40,5 +40,5 @@ cmd:-
 
 TO DELETE:-
 cmd:-
-delete from transaction
-where Transaction_DateTime = "2023-03-19 16:26,17";
+    delete from transaction
+    where Transaction_DateTime = "2023-03-19 16:26,17";
