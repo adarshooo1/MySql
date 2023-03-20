@@ -6,7 +6,7 @@ To add the check constriant to a new table.
         hourly_pay DECIMALS(5,2),
         hire_date Date,
         CONSTRAINT check_houly_pay CHECK (hourly_pay >= 10.00)
-    )
+    );
 
 To add the check constraint to an Existing table:
     cmd:ALTER TABLE Employees
@@ -14,7 +14,7 @@ To add the check constraint to an Existing table:
 
 To Delete the check constraint from the header Item of the table:     
     cmd:ALTER TABLE Employees
-        drop CHECK check_hourly_pay
+        drop CHECK check_hourly_pay;
 
 //Simply if we put less than 10.00 amount in the hourly_pay column then it will be declared as voilated.
 //So we have make the amount should be more than 10.00 to fill the row.   

@@ -1,0 +1,26 @@
+PRIMARY KEY
+
+To add a primary key in a new table:
+cmd:create table Transaction(
+    transaction_Id INT PRIMARY KEY,
+    amount DECIMALS
+);
+
+To add a primary key constraint in an existing table:
+cmd:Alter table Transaction
+    Add CONSTRAINT
+    PRIMARY KEY(transaction_Id);
+//If Transaction_Id has the PRIMARY KEY than all the values inside the Transaction_Id should
+  be different form each other.As well if we have set the PRIMARY KEY to the transaction_Id
+  then we cannot add other PRIMARY KEY to the amount then we can't be able to make it as a PRIMARY KEY.
+
+To remove a primary key from the table.
+cmd:ALTER TABLE Transaction
+    DROP CONSTRAINT Transaction_Id;
+
+
+
+
+////////////////////////////////////
+NOTE: [We can unly use one primary key to a single table.
+      After adding primary key constraint we use only.]

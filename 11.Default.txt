@@ -25,15 +25,13 @@ cmd:-
         Transaction_AMOUNT , DECIMALS,
         Transaction_DateTime DATETIME Default Now()
     );
+//When we use DATETIME column and set now() function as a defalut then we have 2 choices we can give the time by own
+else if we leave the date and time colums empty then with the help of the now() function it will fill the value
+of the date and time itself.
 
 
-cmd:-
-    create table Transaction(
-        Transaction_Id INT,
-        Transaction_AMOUNT decimal,
-        Transaction_DateTime DATETIME Default Now()
-);
-
+//Here we decided to fill the Transaction Id and amount section then it automatically fill the Transaction_DateTime section because we are using as the default which means it will
+fill automatically when we have set as the defualt value in it.
 cmd:-
     insert into transaction(transaction_id , transaction_amount)
     values (1 , 30.44);
