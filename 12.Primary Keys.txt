@@ -3,8 +3,12 @@ PRIMARY KEY
 To add a primary key in a new table:
 cmd:create table Transaction(
     transaction_Id INT PRIMARY KEY,
-    amount DECIMALS
+    amount DECIMALS(5 , 3) //Example:99999.999 - This is the limit to store the values till this amount.
 );
+//To Increase the size of the amount in DECIMALS:
+cmd:ALTER TABLE Transaction
+    MODIFY COLUMN Transaction DECIMAL(8,5);
+
 
 To add a primary key constraint in an existing table:
 cmd:Alter table Transaction
@@ -18,9 +22,14 @@ To remove a primary key from the table.
 cmd:ALTER TABLE Transaction
     DROP CONSTRAINT Transaction_Id;
 
+To spectate which Transaction_Id has what amount:
+cmd:SELECT amount
+    from Transaction
+    where Transaction_Id = 105;    
 
 
 
 ////////////////////////////////////
-NOTE: [We can unly use one primary key to a single table.
-      After adding primary key constraint we use only.]
+NOTE: [We can unly use one primary key to a single table. Example: Table Transaction we have a primary key at the Transaction_Id.
+      After adding primary key constraint we can only use only one seperate name like uniuqe identificatio Ex: 101 , 102 , 103 , 104. If we tried to insert with the same transaction_Id then it will give error and till we don't use diffferent transaction_Id.
+      After specifying the primary key on the specific header of the table the values inside the table cannot be null at the time of Inserting Values]
