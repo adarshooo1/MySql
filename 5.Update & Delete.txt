@@ -1,6 +1,6 @@
 ///////////////////////////UPDATE///////////////////////////
 //So If we want to add the null part of the Table Item at last. Run this query first then we can update;
-cmd:SET SQL_SAFE_UPDATE = 0;
+cmd:SET SQL_SAFE_UPDATES = 0;
 
 //Adding Like this with the specific employee_Id place;
 cmd:update employees

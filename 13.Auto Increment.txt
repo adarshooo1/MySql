@@ -20,5 +20,9 @@ cmd:ALTER TABLE Transaction
     cmd:ALTER TABLE Transaction
         AUTO_INCREMENT = 101;
 
+To remove or drop the auto_increment from the table:
+cmd:Alter Table Transaction
+    MODIFY Transaction_Id INT;        
+
 /////////////////////////////////////////////////
 NOTE: [By default Auto_Increment start from 1]

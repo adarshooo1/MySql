@@ -1,0 +1,31 @@
+Foreign Keys
+
+A foreign key, which permit cross referencing related data across tables, and foreign key constraints, which helps keep the data consistent.
+A foreign key relationship invokes a parent table that holds the initial column value and a child table with column values that reference the parent column values ,A foreign key constraint is defined on the child table.
+
+
+To make a table from which we have to make connection with the foreign keys:
+cmd:--create table customers(
+    --customer_id int primary key auto_increment,
+    --first_name varchar(50)
+    --last_name varchar(50)
+    --);
+
+To setup a foreign key constraint in a new table and make connect with the existing table:
+cmd:-- create table transaction(
+    -- customer_id INT auto_increment,
+    -- transaction_id int primary key auto_increment,
+    -- transaction_amount decimal(10 , 2),
+    -- foreign key(customer_id) references customers(customer_id)
+    -- );
+    //Here we set foreign key in the table transaction(customer_id) and the reference is given from customer table (customer_id).
+
+To drop foreign key constraint:
+cmd:--Alter table transaction
+    --drop foreign key transactions_ibfk_1; //transactions_ibfk_1 this key we will get from mysql under table and inside the table in which we have set the foreign key there is a section of foreign Keys there we will get the foreign key constraint name.
+
+To rename the foreign key constraint and add a foreign key constraint in an existing table:
+cmd:--Alter table Transaction
+    --Add constraint fk_customer_id
+    --foreign key (customer_id) reference customer(customer_id);   
+    
