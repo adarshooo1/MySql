@@ -1,0 +1,24 @@
+AUTO INCREMENT
+
+To make a new table with the Auto_Increment constraint with primary key:
+cmd:create table Transaction(
+    Transaction_id int primary key auto_increment,
+    amount DECIMAL (6,6)
+    //we can use auto_increment without primary key as well.
+    );
+
+To set a auto_increment property in an existing table which has auto_increment attribute.
+cmd:ALTER TABLE Transaction
+    AUTO_INCREMENT = 101;
+    //This will find that where is the auto_increment property in the table and automatically make the count start from the 101;
+
+To set auto_increment from stratch in an existing table:
+cmd:ALTER TABLE Transaction
+    MODIFY COLUMN Transaction_Id INT AUTO_INCREMENT;
+
+    To set the auto_increment Count:
+    cmd:ALTER TABLE Transaction
+        AUTO_INCREMENT = 101;
+
+/////////////////////////////////////////////////
+NOTE: [By default Auto_Increment start from 1]
