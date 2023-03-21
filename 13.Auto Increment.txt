@@ -3,7 +3,7 @@ AUTO INCREMENT
 To make a new table with the Auto_Increment constraint with primary key:
 cmd:create table Transaction(
     Transaction_id int primary key auto_increment,
-    amount DECIMAL (6,6)
+    amount DECIMAL (10,2)
     //we can use auto_increment without primary key as well.
     );
 
