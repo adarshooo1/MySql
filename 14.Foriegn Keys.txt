@@ -13,7 +13,7 @@ cmd:--create table customers(
 
 To setup a foreign key constraint in a new table and make connect with the existing table:
 cmd:-- create table transaction(
-    -- customer_id INT auto_increment,
+    -- customer_id INT ,
     -- transaction_id int primary key auto_increment,
     -- transaction_amount decimal(10 , 2),
     -- foreign key(customer_id) references customers(customer_id)
@@ -24,8 +24,22 @@ To drop foreign key constraint:
 cmd:--Alter table transaction
     --drop foreign key transactions_ibfk_1; //transactions_ibfk_1 this key we will get from mysql under table and inside the table in which we have set the foreign key there is a section of foreign Keys there we will get the foreign key constraint name.
 
-To rename the foreign key constraint and add a foreign key constraint in an existing table:
+To rename the foreign key constraint / add a foreign key constraint in an existing table:
 cmd:--Alter table Transaction
     --Add constraint fk_customer_id
     --foreign key (customer_id) reference customer(customer_id);   
+
+To chnage the order of the number in the transaction_id:
+cmd:
+    -- UPDATE transaction
+    -- SET transaction_id = 
+    --   CASE 
+    --     WHEN transaction_id = 1008 THEN 1001
+    --     WHEN transaction_id = 1009 THEN 1002
+    --     WHEN transaction_id = 1010 THEN 1003
+    --     WHEN transaction_id = 1011 THEN 1004
+    --     WHEN transaction_id = 1012 THEN 1005
+    --     WHEN transaction_id = 1013 THEN 1006
+    --     WHEN transaction_id = 1014 THEN 1007
+    --   END;
     

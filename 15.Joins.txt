@@ -1,0 +1,31 @@
+There are 3 types of join:
+Inner Join:-
+In Inner joins we select which table we want to be in the left,
+
+cmd:select *
+    from transaction inner join buyer
+    on transaction.customer_id = buyer.customer_id;
+
+    //Here after keyword:- Inner join we select buyer table item in the left and transaction table item at left.
+    //Then we relate transaction (customer_id) with buyer (customer_id).
+
+//As well we can we can set them as naming converntion:
+    cmd:select transaction_Id,first_name,last_name,amout
+        from transaction inner join buyer
+        on transaction.customer_id = buyer.customer_id;    
+
+        //Here we didn't use customer_id because in our data every customer doesn't have customer_id. But we can do like this also.
+
+//Left Join:-
+    //where we use inner join in the prevoius example just we have to use (left join) in the place of inner join, It will just make the buyer table at the left side then transaction table to the right.
+    
+    cmd:select *
+    from transaction inner left buyer
+    on transaction.customer_id = buyer.customer_id;
+
+//Light Join:-
+    //where we use inner join in the prevoius example just we have to use (left join) in the place of inner join, It will just make the transaction table at the left side then buyer table to the right.
+
+    cmd:select *
+    from transaction right join buyer
+    on transaction.customer_id = buyer.customer_id;

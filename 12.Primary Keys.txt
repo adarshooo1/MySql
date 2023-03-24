@@ -18,9 +18,13 @@ cmd:Alter table Transaction
   be different form each other.As well if we have set the PRIMARY KEY to the transaction_Id
   then we cannot add other PRIMARY KEY to the amount then we can't be able to make it as a PRIMARY KEY.
 
-To remove a primary key from the table.
+To remove or drop a primary key from the table.
 cmd:ALTER TABLE Transaction
     DROP CONSTRAINT Transaction_Id;
+
+    or,
+    ALTER TABLE Transaction
+    Drop primary Key;
 
 To spectate which Transaction_Id has what amount:
 cmd:SELECT amount
