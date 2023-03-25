@@ -1,0 +1,28 @@
+In MySQL, the AND, OR, and NOT operators are used to combine multiple conditions in a WHERE clause to filter data from a table.
+Here's how you can use these operators with comments:
+
+
+1.AND Operator:
+  The AND operator is used to combine multiple conditions in a WHERE clause. The condition will be true only if all the conditions separated by AND are true.
+cmd:SELECT *
+    FROM customers
+    WHERE country = 'USA' -- Retrieve customers from USA
+    AND city = 'New York' -- Retrieve customers from New York
+    AND age > 30; -- Retrieve customers from New York who are older than 30
+
+2.OR Operator:
+  The OR operator is used to combine multiple conditions in a WHERE clause. The condition will be true if any of the conditions separated by OR is true.
+
+cmd:SELECT *
+    FROM customers
+    WHERE country = 'USA' -- Retrieve customers from USA
+    OR city = 'New York' -- Retrieve customers from New York
+    OR age > 30; -- Retrieve customers who are from USA or New York or older than 30
+
+3.NOT Operator:
+  The NOT operator is used to negate a condition in a WHERE clause. The condition will be true only if the negated condition is false.
+
+cmd:SELECT *
+    FROM customers
+    WHERE NOT country = 'USA'; -- Retrieve customers who are not from USA
+  
