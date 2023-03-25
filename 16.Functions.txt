@@ -1,0 +1,31 @@
+In MySQL, a function is a set of SQL statements that perform a specific task and return a single value or a table of values.
+MySQL provides various built-in functions, such as mathematical functions, string functions, date and time functions, and aggregate functions.
+
+Basic in-built function:
+cmd:select count(amount)
+    from transaction;
+    //this will print the count of the amount that as happened in the table transaction.
+
+cmd:select count(amount) AS Count
+    from transaction;
+    //this will also do the same like previous once but the difference it will print in a preety way.
+
+//This is the function to get min value
+cmd:select min(amount) AS Min_Value
+    from transaction;
+
+//This is the function to get max value
+cmd:select max(amount) AS Max_Value
+    from transaction;
+
+//This is the function to get Average Value
+cmd:select avg(amount) AS Average_Value
+    from transaction;
+
+//This is the function to get sum amount
+cmd:select sum(amount) AS Sum_Value
+    from transaction; 
+
+//This is the function to concat 2 string/varchar values together seperate with a space inside duble quote.
+cmd:select concat(first_Name," ", last_Name )AS Full_Name
+    from employees;
