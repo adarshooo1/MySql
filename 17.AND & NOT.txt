@@ -25,4 +25,19 @@ cmd:SELECT *
 cmd:SELECT *
     FROM customers
     WHERE NOT country = 'USA'; -- Retrieve customers who are not from USA
+
+4.Between:
+  The Between operator is use to search in between in WHERE clause.The is work like a AND condition.
+
+cmd:SELECT *
+  FROM Employees
+  WHERE hire_Date Between "2023-03-24" AND "2023-04-12"
+
+5.In:
+  The In operator is use to search the specific with the WHERE clause.
+
+cmd:SELECT *
+    FROM Employees
+    WHERE Designation IN ("Driver" , "Maintenance" , "Guard")  
+    //This will show the table of Driver , Maintenance and Guards when they join wat are those names , join date and Employee_id.(Means Everything about them)
   
