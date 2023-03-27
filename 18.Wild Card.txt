@@ -1,0 +1,19 @@
+--WIld CARD Characters 1.(%) and 2.(_)
+
+Basically this helps in to search with the keywods.
+
+1.%
+cmd:SELECT * FROM Employees
+    WHERE first_name LIKE "m%";
+    or
+    WHRE first_name LIKE "kum%";
+    //Here like is a keyword that helps in finding that which names starts form s.
+
+2._    
+cmd:SELECT * FROM Employees
+    WHERE Designation LIKE "_er"; it will search where is the 3 word letter which ends from er.
+    Where Designation LIKE "____er"; it will search where is the 6 word letter which ends from er. or "___ve_" (driver) 6 words in the Driver.
+
+3._ and % together
+cmd:SELECT * FROM Employees
+    WHERE Designation LIKE "_a%"; // This will search in which second of the letter start from the letter and later can be anything.

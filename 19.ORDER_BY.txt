@@ -1,0 +1,11 @@
+Order by:-
+
+To Arrange the order in Ascending:
+cmd:select * from Employees
+    order by first_name , last_name, employee_id;
+    //Note: By defalut the item get arranged in Ascending order.
+
+To Arrange the order specifivally:
+
+cmd:select * from  Employees   
+    order last_name ASC , employee_id DESC;
