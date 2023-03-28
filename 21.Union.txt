@@ -1,0 +1,16 @@
+--UNION combines the result of two or more select statements.
+
+Note:To UNION Table it is mandatory that both the table should have same content in terms of rows and columns.
+
+Table expenses have 2 rows and 5 columns same as table income has.
+cmd:select * from income
+    union
+    select * from expense;
+    //It will merge the table income and expenses but the problem is both has 2 different aspects income and expense. which is written under the head income table header.
+
+//So If we have a table which has not same number or columns and rows so, we find that what is common.
+cmd:select first_Name , last_Name from employees
+    UNION/UNION ALL
+    select first_Name , last_Name from buyers;
+
+    //If suppose we have duplicate same so union will confuse so, Replace by UNION ALL will help in this case.

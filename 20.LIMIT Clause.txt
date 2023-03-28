@@ -1,0 +1,19 @@
+--LIMIT clause is used to limit the number of records.
+--Usefull if you're working wita a lot of data.
+--Can be used to display a large data on pages (Pagination)
+
+//Simply we can set the limit till what number we want to see the Data.
+cmd:SELECT * FROM Employees
+    limit 5;
+    //This will show the detail of first five id with all the details.
+
+//We can set 2 parameter to see the detail:
+cmd:SELECT * FROM Employees
+    LIMIT 0, 10;
+    //Here 0 will start from the start index and it will show the detail till the 10th number.
+    //If think we have data of 100 employees then start from (0,10), next can be (10,10) which means after 10th data which means from 11 and see next 10 data of employess after 11, like this we can go till (90,10) which will show the deatil of the last employess of the table.
+
+//We can also use order-by (Ascending and Descending) to see the data.
+cmd:SELECT * FROM Employees
+    ORDER BY first_Name DESC/ASC LIMIT 0 , 10; (if the data is large.)
+    //This will order the data by the ascending/descending format for the first_Name. We can also choose other than first_Name as well.
