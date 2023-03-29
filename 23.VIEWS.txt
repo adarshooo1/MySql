@@ -1,0 +1,18 @@
+//Views
+-- a Virtual table based on the result-set of an SQL statement
+-- The fields in a view are fields from one or more real tables
+-- They're not real table, but can be interacted with as if they were.
+
+
+To create a view table:
+cmd:create view employee AS
+    select first_Name , last_Name
+    from customer; //Here Customer is the existing table which have, first_Name and Last_Name column with names.
+
+To view the table
+cmd:select * from employee;
+
+//When we update the main table of customer then the table which we create on view named employee then it will also updated in view table.
+
+To Drop the view
+cmd:Drop view employee;
