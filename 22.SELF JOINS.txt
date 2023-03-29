@@ -1,0 +1,56 @@
+//SELF JOINS
+--Join another copy of a table to itself
+--used to compare rows of the same table
+--helps to display a hierarchy of data.
+
+//Here we crete a table customer with these values, Customer_id,First_Name,last_Name and Referral_id.
+
+After that fill them all but the at the referral id, we will tell who is reffered by which cutomer id.
+
+//cmd:update customer
+      add referral_id = 1
+      where Customer_id =2;
+
+//cmd:update customer
+      add referral_id = 2
+      where Customer_id = 3;
+
+//cmd:update customer
+      add referral_id = 2
+      where Customer_id = 4;
+
+//cmd:update customer
+      add referral_id = 4
+      where Customer_id = 5
+
+Here one person is refered by only one and some are reffered by one person like this referral is working in the real life as well.
+
+So to join then we have , Inner Join , Left Join and Right Join
+
+To inner Join the table to the table itself is known as self joins:
+cmd:select * 
+    from customer as a
+    Inner Join customer as b
+    ON a.referral_id = b.Customer_id (vise verse-> a.Customer_id = b.referral_id)
+
+
+//WE can do like this to make it keep clear and easy to read.
+cmd:select a.customer_id , a.first_Name , a.last_Name ,
+    concat(b.first_Name," ",b.last_Name) as "Referred By"
+    from customer as a
+    Inner Join customer as b
+    on a.referral_id = b.customer_id;
+
+//Left Join
+cmd:select a.customer_id , a.first_Name , a.last_Name ,
+    concat(b.first_Name," ",b.last_Name) as "Referred By"
+    from customer as a
+    Left Join customer as b
+    on a.referral_id = b.customer_id;    
+
+//Right Join
+cmd:select a.customer_id , a.first_Name , a.last_Name ,
+    concat(b.first_Name," ",b.last_Name) as "Referred By"
+    from customer as a
+    RIght Join customer as b
+    on a.referral_id = b.customer_id;    
