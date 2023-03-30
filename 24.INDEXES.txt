@@ -1,0 +1,38 @@
+--INDEX (BTree data structure)
+--INDEX are used to find values within a specigic column more quickly.
+--MySql noramlly searches subquentially though a column
+--The longer the column, the more expensive the operation is
+--Update takes more time, select takes less time.
+
+To create a single column indexes:
+cmd:create indexes last_name_idx
+    on customer last_name;
+    //This helps in search faster
+
+//To check on the table that what name is given created index on the table and where the index key is set on the table column.
+cmd:show indexes from customer.  ;
+
+To search faster with the indexing:
+cmd:select * from customer
+    where last_name = "Lohiya";
+    //This will search more faster.
+
+To create a multi column indexes:
+cmd:CREATE INDEX last_name_first_name_idx
+    ON customer(last_name , first_Name);
+
+To search faster with the multi indexing:
+cmd:show * from customer
+    where last_name = "Lohiya" AND first_Name = "Mukesh";
+
+
+To check indexes:
+cmd:show indexes from customer;
+
+To DROP INDEXES:
+cmd:ALTER TABLE customer
+    DROP INDEX last_name_idx;
+
+
+//This will search from the most right index.
+
