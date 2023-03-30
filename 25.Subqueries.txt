@@ -1,0 +1,18 @@
+--Subquery
+--A query within another query
+--Query(Subquery)
+
+
+To select a query and add other sub_query inside the qurey.
+cmd:SELECT first_Name , last_Name ,hourly_pay
+        (select AVG(hourly_pay) from customer) As Average_pay
+    from customer;
+
+
+To select a query and add other sub_query inside the query and compare with the hourly_pay and whose hourly_pay is greater than the average_pay display those details in the table.
+cmd:select first_Name , last_Name , hourly_pay
+    from customer
+    where hourly_pay > (SELECT AVG (hourly_pay) from customer)
+
+
+//Just try to write the sub-queries first then the main query.
