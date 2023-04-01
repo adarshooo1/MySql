@@ -1,0 +1,12 @@
+ROLLUP , extension of the GROUP BY clause
+produce another row and shows the GRAND TOTAL(super-aggregate value)
+
+//WITH ROLLUP it will just grand total of all the amount at the last.
+cmd:select sum(amount), transaction_date
+    from record
+    group by transaction_date  with rollup;
+
+//WITH ROLLUP it will just grand total of all the count at the last.
+cmd:select count(amount), transaction_id
+    from record
+    group by transaction_id  with rollup;

@@ -1,3 +1,50 @@
 --Group By = Aggregate all rows by a specific column
 --often used with aggregate functions
 --ex. SUM(), MAX(), MIN(), AVG(), COUNT().
+
+To create a table:
+cmd:create table Record(
+    Serial_No int,
+    first_name varchar(50),
+    last_name varchar(30),
+    transaction_id int,
+    amount decimal(5.2),
+    transaction_date date
+    );
+
+To Insert values inside a table:
+cmd:-- Insert into record
+    -- values (1,"Adarsh","Singh",2001,432.43,"2022-03-12"),
+    -- (2,"Jagrit","Pratap",2002,543.11,"2022-03-16"),
+    -- (3,"Deepu","Chauhan",2003,32.43,"2022-03-20"),
+    -- (4,"Alexander","Great",2004,423.54,"2022-03-25"),
+    -- (5,"Garry","Nicolas",2005,897.32,"2022-04-1"),
+    -- (6,"Adarsh", "Singh" ,2001 , 987.2, "2022-04-2"),
+    -- (7,"Maddy","Jones",null,823.2,"2022-04-6"),
+    -- (8,"Deepu","Chauhan",2003,1000,"2022-04-10"),
+    -- (9,"Mike","Tyson",null,334,"2022-03-15");
+
+To order thing as per the data using sum() and group by transaction_id:
+cmd:select sum(amount), transaction_id
+    from record
+    group by transaction_id;
+    //Here we group by transaction_id because as we can see that we have multiple transaction_id which is same but differenciated by Serial_No, amount and date. So Here we sum the amount and with the reference of transaction_id we group the amount with the help of sum() function.
+
+To order thing as per the data using sum() and group by transaction_date:
+cmd:select sum(amount), transaction_date
+    from record
+    group by transaction_date;
+
+//Like this we can group by max(), min(), avg(), count().
+
+//We can also do like this:
+cmd:select sum(amount), transaction_id, first_name
+    from record
+    group by transaction_id , first_name;
+    //This will give the data according to the first_Name , transaction_id and sum amount.
+
+//How to use Having clause instead of where clasue because where is not working with this:
+cmd:SELECT SUM(amount), transaction_id, first_name
+    FROM record
+    GROUP BY transaction_id , first_name
+    HAVING SUM(amount) > 600 AND transaction_id IS NOT NULL;
