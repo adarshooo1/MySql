@@ -1,0 +1,11 @@
+--ON DELETE SET NULL = When a FK is deleted , replace FK with NULL
+--ON DELETE CASCADE = WHEN a FK is DELETED, delete row.
+--FK stands for foreign Key.
+
+//By Defalt ON DELETE & ON UPDATE is restricted in mysql.
+
+So supppose we have 2 table and 
+1.Table customer
+2.Table Transaction
+
+//In the customer table we have customer_id which is set as a primary key.
