@@ -9,3 +9,65 @@ So supppose we have 2 table and
 2.Table Transaction
 
 //In the customer table we have customer_id which is set as a primary key.
+
+//In the table transaction we have set the foreign Key in the customer_id.
+
+So, ON Delete is basically we are going to perform in the table which has the foreign key constraint.Because as we know that the table which have the foreign key.
+
+//Foreign key is on the table transaction so we can delete anything without any restriction.
+
+//But on the table customer there is the restriction to delete the row which has the foreign key constraint and linked with the table transaction. So,
+
+//To delete the foreign-Key associated values :
+cmd:set foreign_key_checks = 0;
+
+
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+To create a new table with ON DELETE:
+cmd:-- create table transaction(
+    -- customer_id int,
+    -- transaction_id int auto_increment primary key,
+    -- amont decimal (10,2),
+    -- Transaction_date DATE,
+    -- foreign key(customer_id) references customer(customer_id),
+    -- ON DELETE SET NULL
+    -- );
+
+To set ON DELETE in Existing table.
+//First we have to delete the foreign key to set ON DELETE SET NULL.
+cmd1:ALTER TABLE Transaction DROP foreign Key fk_customer_id;
+
+//We can now set like this.
+cmd2:ALTER TABLE Transaction
+ADD constraint fk_customer_id
+foreign Key(customer_id references) customer(custoemr_id)
+ON DELETE SET NULL;
+
+//Now we can delete from transaction anyone customer_id.
+cmd:delete from customer
+    where customer_id = 4;
+
+
+/////////////////ON DELETE CASCADE//////////////////////////////////
+To set ON DELETE CASCADE IN A NEW TABLE;
+cmd:-- create table transaction(
+    -- customer_id int,
+    -- transaction_id int auto_increment primary key,
+    -- amont decimal (10,2),
+    -- Transaction_date DATE,
+    -- foreign key(customer_id) references customer(customer_id),
+    -- ON DELETE CASCADE
+    -- );
+
+//TO set ON DELETE CASCADE IN EXISTING TABLE.
+step 1.
+//have have to drop the existing foreign;
+step 2.
+//Add the foreign key with IN DELETE CASCADE.
+cmd:ALTER TABLE Transaction
+    ADD constraint fk_customer_id
+    foreign Key(customer_id references) customer(custoemr_id)
+    ON DELETE CASCADE;
+
+    //Now when we delete any customer id then from table customer then all the transaction related history and record means his row will be delete when we delete customer_Id.
+
