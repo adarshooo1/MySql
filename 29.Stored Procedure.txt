@@ -1,0 +1,42 @@
+--Stored Procedure = is prepared SQL code that you can save great is there's a query that you write often.
+
+To create a procedure to get all customer distinct names from transaction and customer table in which transaction table has the foreign key constraint.
+cmd:DELIMTER $$
+    CREATE PROCEDURE get_customer()
+    BEGIN
+        SELECT * FROM customer;
+    END $$
+    DELIMITER ;
+
+    //The DELIMITER will change the semi-colon symbol with the $ and we know to view the table (;) is mandatory so we will change the DELIMETER else the command will not get execute.
+
+    //PATH
+    /schemas/Stored Procedure there is the get_customer procedure which we can call and get all the customer table detail with:
+cmd: CALL get_customer()
+
+To Drop the procedure:
+cmd: DROP PROCEDURE get_customer;
+
+////////////////////////////////////////////////////////////////
+//Procedure 2;
+To create a procedure with parameter:
+cmd:DELIMITER $$
+    create procedure find_customer(IN ID INT)
+    BEGIN
+        SELECT * from customer where customer_id = ID;
+    END $$
+    DELIMITER ;
+
+    To call:
+    cmd:CALL get_customer(2);//It will show all the detail of the customer whom customer_id we will search;
+
+//Procedure 3::
+
+DELIMITER $$
+create procedure find_customer(IN ID INT, IN email varchar(100))
+BEGIN
+	select * from customer where customer_id = ID AND email_id = email;
+END $$
+DELIMITER ;
+
+CALL find_customer(1, "adarshsingh1@gmail.com");    
