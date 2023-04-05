@@ -1,0 +1,79 @@
+Trigges = When an event happens, do something
+            ex. (Insert , update , delete)
+            checks data , handle errors , auditing tables.
+
+
+If suppose we have a table like this:
+cmd:-- create table Employees(
+    -- employee_id INT primary key Auto_increment,
+    -- first_name varchar(50),
+    -- last_name varchar(50),
+    -- hourly_pay decimal(10 , 2),
+    -- Salary_Per_annum Decimal(10.2),
+    -- job varchar(50),
+    -- hire_date Date,
+    -- supervisor_id INT
+    -- );
+
+We have some values at every row in this column except Salary_Per_annum.Because we will calculate all together.
+
+To update salary all together of every employees:
+cmd:Update Employees:
+    set Salary_Per_annum = hourly_pay * 2880; (As we know that we have 8 working in a days and a employee is get paid for the 30 days in a month and 12 months in a year).
+
+
+To activate Trigger in the table Employees As hourly_pay change we will update the Salary_Per_annum also. So triggers is helping to update accordingly.
+cmd:Create Trigger before_hourly_pay_update
+    BEFORE UPDATE ON employees
+    for each row
+    set New.Salary_Per_annum = (NEW.hourly_pay * 2880);
+
+suppose if we update hourly_pay:
+cmd:update employees
+    set hourly_pay = 220.3
+    where employee_id = 2;
+    //So when we update this then the Salary_Per_annum will also change without making any change which is good. As the hourly_pay change so the Annual Income will also change.
+
+To check the triggers:
+1> Under schemas/Under Employees/Under Trigger.   2>SHOW TRIGGERS;    
+
+//Crete Insert Trigger Now when we insert a new employee 
+cmd:Create trigger before_hourly_pay_insert
+    before insert on Employees
+    for each row
+    set new.Salary_Per_annum = (new.hourly_pay * 2880);
+
+    //So now when we Insert a new employee with hourly_pay then it will automatically calculate the value of the Salary_Per_annum, Still we pass the null or leave the parameter while inserting values, ex:values ("Honey" , "Bee" ,   410,null / leave,"Asst. Manager" , "2022-04-06" , 2); of the new Employees.
+
+
+
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+Example 2:
+
+//Create a new Table.
+-- update expenses
+-- set expense_total = (select sum(Salary_per_annum) from employees)
+-- where expense_name = "Salaries";
+
+//Creat a trigger afetr deleting any employees which will tell the Salaries in the Expenses table which is the sum total of the Employees Salary_Per_annum total sum. If any change in the Employees table related to the Salaries will occur then the changes will be visible to the Expenses Table.
+-- create trigger  after_Salary_per_annum
+-- after delete on employees
+-- for each row
+-- update expenses
+-- set expense_total = expense_total - OLD.Salary_per_annum
+-- where expense_name = "Salaries";
+
+
+//Create trigger after inserting the employee in the Employees table will change the Salaries on the Expenses table.
+create trigger after_salary_per_annum_insert
+After insert on employees
+for each row
+update expenses
+set expense_total = expense_total + New.Salary_per_annum
+where expense_name = "Salaries";
+
+//To drop trigger.
+-- drop trigger after_salary_per_annum;
+
+
+
