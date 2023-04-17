@@ -74,6 +74,3 @@ where expense_name = "Salaries";
 
 //To drop trigger.
 -- drop trigger after_salary_per_annum;
-
-
-
