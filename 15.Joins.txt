@@ -29,3 +29,19 @@ cmd:select *
     cmd:select *
     from transaction right join buyer
     on transaction.customer_id = buyer.customer_id;
+
+//Double Table Joins:-
+    select
+    orderNumber,status, o.orderNumber , customerName, salesRepEmployeeNumber, firstName
+    from orders o
+    join customers c
+    on c.customerNumber = o.customerNumber;
+
+//Multiple Table Joins:-
+    select
+    orderNumber,status, o.orderNumber , customerName, salesRepEmployeeNumber, firstName
+    from orders o
+    join customers c
+    on c.customerNumber = o.customerNumber
+    join employees e
+    on c.salesRepEmployeeNumber = e.employeeNumber;
