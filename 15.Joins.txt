@@ -45,3 +45,16 @@ cmd:select *
     on c.customerNumber = o.customerNumber
     join employees e
     on c.salesRepEmployeeNumber = e.employeeNumber;
+
+// Self Join
+select
+mgr.employeeNumber,
+mgr.jobTitle,
+mgr.firstName,
+mgr.lastName,
+emp.firstName,
+emp.lastName,
+mgr.email as "Report At"
+from employees emp
+inner join employees mgr
+on mgr.employeeNumber = emp.reportsTo;
