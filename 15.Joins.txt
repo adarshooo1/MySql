@@ -46,7 +46,7 @@ cmd:select *
     join employees e
     on c.salesRepEmployeeNumber = e.employeeNumber;
 
-// Self Join
+// Self Join This is Explicit Join because here we use on clause;
 select
 mgr.employeeNumber,
 mgr.jobTitle,
@@ -58,3 +58,16 @@ mgr.email as "Report At"
 from employees emp
 inner join employees mgr
 on mgr.employeeNumber = emp.reportsTo;
+
+// Example of self join to demonstrate Implicit Join because here we use Where clause; 
+select
+mgr.employeeNumber,
+mgr.jobTitle,
+mgr.firstName,
+mgr.lastName,
+emp.firstName,
+emp.lastName,
+mgr.email as "Report At"
+from employees emp
+inner join employees mgr
+Where mgr.employeeNumber = emp.reportsTo;
