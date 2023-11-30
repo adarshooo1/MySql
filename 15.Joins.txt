@@ -72,7 +72,8 @@ from employees emp
 inner join employees mgr
 Where mgr.employeeNumber = emp.reportsTo;
 
--- Joins Using Where clause, We implement where clause wehere in both the table we have columns with same name that repesents the same data.
+-- Joins Using using clause, We implement using clause where in both the table we have columns with same name that repesents the same data.
+-- Ex: customer.officeNumber = order.offceNumber , then we can simply use using clause : using(customerNumber)
 select c.customerNumber, customerName, status from customers c
 inner join orders o using (customerNumber);
 
@@ -93,16 +94,15 @@ select c.customerNumber,
 
 -- Self Outer Join, Because we merging results of a same table, using Left/Right Joins.
  SELECT mgr.employeeNumber as "Id",
- 	   emp.jobTitle as "Designation",
- 	    emp.lastName as "Name",
+ 	emp.jobTitle as "Designation",
+ 	emp.lastName as "Name",
         emp.employeeNumber as "Emp Id",
         mgr.jobTitle as "Level",
         mgr.lastName as "Employee Name",
         mgr.email as "Replorting E-mail"
         from employees emp
-	    left join employees mgr
-        on
-        mgr.employeeNumber = emp.reportsTo;
+	left join employees mgr
+        on mgr.employeeNumber = emp.reportsTo;
     
 -- Natural Join: We dont specify on which we have to perform joins & when we use Natural Joins then it unified the columns which have same results, Like here customer number is same in both.(Not Recommended)
 select * from customers natural join orders; 

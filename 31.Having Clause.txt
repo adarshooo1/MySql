@@ -1,0 +1,56 @@
+Why use Having clause over where clause in mysql?
+In MySQL and other SQL databases, the HAVING clause and the WHERE clause serve different purposes, primarily in the context of aggregate functions.
+
+WHERE Clause:
+
+The WHERE clause is used to filter rows before they are grouped and aggregated.
+It is applied to individual rows before they become part of a group.
+Typically used with non-aggregated columns to filter rows based on specific conditions.
+Example: SELECT * FROM orders WHERE status = 'Shipped';
+
+HAVING Clause:
+
+The HAVING clause is used to filter the results of aggregate functions applied to groups of rows.
+It is applied after the GROUP BY clause and after any aggregate functions have been calculated.
+Used to filter groups based on aggregate conditions.
+Example: SELECT status, COUNT(*) FROM orders GROUP BY status HAVING COUNT(*) > 10;
+Here's a more concrete example to illustrate the difference:
+
+#MySQL
+-- Using WHERE clause
+SELECT status, COUNT(*) AS order_count
+FROM orders
+WHERE orderDate > '2023-01-01'
+GROUP BY status
+HAVING COUNT(*) > 5;
+
+
+In this example, the WHERE clause filters rows based on the orderDate condition before they are grouped. Then, the HAVING clause filters the groups based on the aggregate condition (COUNT(*) > 5).
+In summary:
+
+Use WHERE for filtering individual rows before grouping.
+Use HAVING for filtering grouped results based on aggregate functions.
+It's important to note that HAVING is only used in conjunction with the GROUP BY clause. If you're not using GROUP BY, you would typically use WHERE to filter rows.
+
+------------------------------------------------------------------
+             --  Classicmodel Database Example --
+------------------------------------------------------------------
+-- Query 1:
+select
+officeCode as "Office Code",
+city as 'City',
+count(employeeNumber) as EmployeeCount
+from employees join offices using (officeCode)
+group by officeCode
+having EmployeeCount > 4;
+
+-- Query 2:
+select
+officeCode as "Office Code",
+city as 'City',
+count(employeeNumber) as EmployeeCount
+from employees
+join offices using (officeCode)
+where officeCode in (1,2,5,6)
+group by officeCode
+having EmployeeCount > 4;

@@ -29,3 +29,56 @@ cmd:select sum(amount) AS Sum_Value
 //This is the function to concat 2 string/varchar values together seperate with a space inside duble quote.
 cmd:select concat(first_Name," ", last_Name )AS Full_Name
     from employees;
+
+-- use classicmodels;
+-- Real Life Business Use Cases
+   -- No of orders placed Daily / Monthly
+   -- No of unique customers every month
+   -- Year wise increase in profits / sales
+   -- Month wise increase in enrollments
+   -- Average ratings per course
+   
+   ------------------------------
+   -- Aggregate funciton in MySQL
+   ------------------------------
+   -- MAX(), MIN(), AVG(), SUM(), COUNT() => Will Return Single Value in the output.
+   
+-- Query 1:
+Select MAX(amount) as "highest Payment",
+	   Min(amount) as "Minimum Payment",
+	   AVG(amount) as "Average Payment",
+	   SUM(amount) as "Total Payment Sum",
+	   COUNT(amount) as "Total Count"
+	   from payments;
+
+-- Query 2:
+select COUNT(*) as "Total Order Count",
+	   COUNT(shippedDate) from orders;
+        
+-- Query 3: On Numbers
+SELECT
+    COUNT(orderNumber) AS "Total Order Number",
+    SUM(CASE WHEN status = 'Shipped' THEN 1 ELSE 0 END) AS "Shipped",
+    SUM(CASE WHEN status = 'In Process' THEN 1 ELSE 0 END) AS "Work In Progress",
+    SUM(CASE WHEN status = 'Disputed' THEN 1 ELSE 0 END) AS "Disputed",
+    SUM(CASE WHEN status = 'On Hold' THEN 1 ELSE 0 END) AS "On Hold",
+    SUM(CASE WHEN status = 'Cancelled' THEN 1 ELSE 0 END) AS "Cancelled",
+    SUM(CASE WHEN status = 'Resolved' THEN 1 ELSE 0 END) AS "Resolved"
+FROM orders;  --(we can do this simply using group by clause)
+
+-- Group by Clause example:-
+-- select Status,
+-- count(*) as "Total Product Count" from POrders group by Status;
+
+
+-- Query 4: On Date
+SELECT
+	MIN(paymentDate) AS "Oldest Date",
+	MAX(paymentDate) AS "Newest Date"
+FROM Payments;
+
+-- Query 5: On String / String Mixied With a Number.
+SELECT
+	MIN(checkNumber) AS "Minimum Check-Number",
+	MAX(checkNumber) AS "Maximum Check-Number"
+FROM Payments;

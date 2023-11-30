@@ -48,3 +48,23 @@ cmd:SELECT SUM(amount), transaction_id, first_name
     FROM record
     GROUP BY transaction_id , first_name
     HAVING SUM(amount) > 600 AND transaction_id IS NOT NULL;
+---------------------------------------------------------------------------------------------
+//Classicmodels Sample Database Query:
+cmd: select productLine,
+     count(*) as "Product Count" from Products group by productLine;
+	//This will select all the distinct product and show all the count of each product.
+
+---------------------------------------------------------
+|// Standard Grouping Syntax		                  |
+|SELECT c1, c2, ...c*n,aggregate_function(ci) |
+|       from table			   				          |
+|       group by c1,c1 , ...c*n;	      				  |
+---------------------------------------------------------
+
+ select
+	officeCode,
+       	city,
+	state,
+	count(*) as "Office Code Count" from employees
+	join offices using (officeCode)  -- using joing to display items from other table as well.
+	group by officeCode , city , state;
