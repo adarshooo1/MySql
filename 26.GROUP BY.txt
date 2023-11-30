@@ -28,7 +28,7 @@ To order thing as per the data using sum() and group by transaction_id:
 cmd:select sum(amount), transaction_id
     from record
     group by transaction_id;
-    //Here we group by transaction_id because as we can see that we have multiple transaction_id which is same but differenciated by Serial_No, amount and date. So Here we sum the amount and with the reference of transaction_id we group the amount with the help of sum() function.
+    //Here we group by transaction_id because as we can see that we have multiple transaction_id which is same but differentiated by Serial_No, amount and date. So Here we sum the amount and with the reference of transaction_id we group the amount with the help of sum() function.
 
 To order thing as per the data using sum() and group by transaction_date:
 cmd:select sum(amount), transaction_date
@@ -49,22 +49,125 @@ cmd:SELECT SUM(amount), transaction_id, first_name
     GROUP BY transaction_id , first_name
     HAVING SUM(amount) > 600 AND transaction_id IS NOT NULL;
 ---------------------------------------------------------------------------------------------
-//Classicmodels Sample Database Query:
+//ClassicModels Sample Database Query:
 cmd: select productLine,
      count(*) as "Product Count" from Products group by productLine;
 	//This will select all the distinct product and show all the count of each product.
 
----------------------------------------------------------
-|// Standard Grouping Syntax		                  |
-|SELECT c1, c2, ...c*n,aggregate_function(ci) |
-|       from table			   				          |
-|       group by c1,c1 , ...c*n;	      				  |
----------------------------------------------------------
+-- --------------------------------------------------- --
+-- --         Standard Grouping Syntax		        -- --
+-- SELECT c1, c2, ...c*n,aggregate_function(ci)        --
+-- from table			   				               --
+-- group by c1,c1 , ...c*n;	      			           --
+-- --------------------------------------------------- --
 
- select
+select
 	officeCode,
        	city,
 	state,
 	count(*) as "Office Code Count" from employees
-	join offices using (officeCode)  -- using joing to display items from other table as well.
+	join offices using (officeCode)  -- using join to display items from other table as well.
 	group by officeCode , city , state;
+
+-- -- Query 2:
+-- -- Total Payments from each customer after a certain date.
+SELECT 
+customerNumber as "Customer.No", customerName as Name, sum(amount) as Amount
+FROM
+    customers
+        JOIN
+    payments USING (customerNumber)
+    where paymentDate >"2005-1-08"
+    group by customerNumber;    
+
+-- Query 3:
+-- Value of Each unique Order sorted by total order value.
+SELECT 
+    orderNumber, SUM(priceEach * quantityOrdered) AS TotalPrice
+FROM
+    orderDetails
+GROUP BY orderNumber
+ORDER BY orderNumber ASC;
+
+-- Query 4:
+-- Value of Each unique Order, and its customer number sorted by total order value.
+SELECT 
+    customerNumber,
+    orderNumber,
+    SUM(quantityOrdered * priceEach) AS Total,
+    customerName
+FROM
+    orderDetails
+        JOIN
+    orders USING (orderNumber)
+        JOIN
+    customers USING (customerNumber)
+GROUP BY orderNumber
+having Total > 20000
+ORDER BY Total ASC;
+
+-- Query 5:
+-- Count of Order for each customer placed by each customer, We have some customers, Customers have many orders (group them) then display the results;
+SELECT 
+    customerNumber,
+    customerName as 'Customer Name',
+    count(customerNumber) AS 'Total Orders'
+FROM
+    orders
+        JOIN
+    customers USING (customerNumber)
+GROUP BY customerNumber;   
+
+-- Query 6: (HARD)
+-- Count of Order through each sales representative
+SELECT 
+    salesRepEmployeeNumber AS 'Emp.No',
+    LastName,
+    COUNT(orderNumber) AS Total
+FROM
+    orders
+        JOIN
+    customers USING (customerNumber)
+        JOIN
+    employees ON customers.salesRepEmployeeNumber = employees.employeeNumber
+GROUP BY employeeNumber
+ORDER BY salesRepEmployeeNumber ASC;
+
+
+-- Query 7:
+-- Count of Order country wise;
+SELECT 
+    country, COUNT(orderNumber)
+FROM
+    customers
+        JOIN
+    orders USING (customerNumber)
+GROUP BY country;
+
+
+-- Query 8:
+-- Count of Order country wise and group by date;
+SELECT 
+    country, orderDate,COUNT(orderNumber)
+FROM
+    customers
+        JOIN
+    orders USING (customerNumber)
+GROUP BY country , orderDate
+order by country asc;
+
+-- Query 9:
+-- Customer with min order values
+SELECT 
+    customerNumber AS 'Customer No.',
+    customerName AS 'Name',
+    SUM(priceEach * quantityOrdered) AS Total
+FROM
+    customers
+        JOIN
+    orders USING (customerNumber)
+        JOIN
+    orderDetails USING (orderNumber)
+    WHERE country = "France"
+GROUP BY customerNumber , customerName
+HAVING Total > 80000;

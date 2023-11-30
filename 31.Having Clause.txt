@@ -54,3 +54,21 @@ join offices using (officeCode)
 where officeCode in (1,2,5,6)
 group by officeCode
 having EmployeeCount > 4;
+
+-- Query 3:
+-- Display orders country wise, So that figure out which country has how many orders.
+SELECT 
+    country, COUNT(*) AS Orders
+FROM
+    orders
+        JOIN
+    customers USING (customerNumber)
+WHERE
+    country IN ('spain' , 'USA',
+        'france',
+        'New Zealand',
+        'Italy',
+        'UK')
+GROUP BY country
+HAVING Orders > 2
+LIMIT 5 , 5;
