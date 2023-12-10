@@ -15,4 +15,43 @@ cmd:select first_Name , last_Name , hourly_pay
     where hourly_pay > (SELECT AVG (hourly_pay) from customer)
 
 
-//Just try to write the sub-queries first then the main query.
+// Just try to write the sub-queries first then the main query.
+
+-- ----------------ClassicModels Example------------------------ --
+
+Example:
+
+-- find products that have same productLine as of "1917 great touring sedan"
+
+SELECT 
+    productLine
+    FROM products
+    WHERE productName = '1917 Grand Touring Sedan'); --Return Vintage Cars
+
+SELECT * FROM products
+    WHERE productLine = "Vintage Cars"
+
+-- Sub Query:
+SELECT * FROM products
+WHERE
+    productLine = (SELECT
+        productLine
+        FROM
+        products
+        WHERE
+        productName = '1917 Grand Touring Sedan'); -- Return all the cars in productLine Vintage cars
+
+// Finding Users those who do not placed orders using Sub query;
+-- select count(customerNumber) from customers where customerNumber Not in (
+-- select Distinct customerNumber from Orders
+-- );
+
+// Finding Users those who do not placed orders using join;
+-- SELECT 
+--     COUNT(*)
+-- FROM
+--     customers
+--         LEFT JOIN
+--     orders USING (customerNumber)
+-- WHERE
+--     OrderNumber IS NULL;
